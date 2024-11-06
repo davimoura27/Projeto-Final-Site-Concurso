@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useConcursos = () => {
+const useConcursos = (uf) => {
   const [concursos, setConcursos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchConcursos = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/concursos");
+        const response = await axios.get(`http://localhost:8080/api/concursos?uf=${uf}`);
         setConcursos(response.data);
       } catch (error) {
         console.error("Erro ao buscar concursos:", error);
@@ -17,7 +17,7 @@ const useConcursos = () => {
       }
     };
     fetchConcursos();
-  }, []);
+  }, [uf]);
 
   return { concursos, loading };
 };
