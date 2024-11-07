@@ -23,15 +23,11 @@ export function Home() {
           <img src={studying} alt="Estudante se preparando para concurso" />
         </div>
       </div>
-      <div>
-        <button onClick={() => setUf("rj")}>RJ</button>
-        <button onClick={() => setUf("sp")}>SP</button>
-        <button onClick={() => setUf("mg")}>MG</button>
-      </div>
+      
+      <ConcursoList uf={uf} setUf={setUf} />
 
 
 
-      <ConcursoList uf={uf} />
     </>
   );
 }
